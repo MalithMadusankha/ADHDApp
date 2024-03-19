@@ -1,13 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Image,
-  Text,
-  StyleSheet,
-  View,
-  Dimensions,
-  Animated,
-  TouchableOpacity,
-} from 'react-native';
+import {Image, Text, StyleSheet, View, Dimensions} from 'react-native';
 import Theme from '../assets/them/AxTheme';
 
 const WelcomeScreen = ({navigation}) => {

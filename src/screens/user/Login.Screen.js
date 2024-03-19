@@ -107,6 +107,7 @@ const LoginScreen = ({navigation}) => {
           <View style={[Theme.h5]} />
           <View style={[Theme.h10, Theme.flexDirRow]}>
             <TouchableOpacity
+              onPress={() => navigation.navigate('Home')}
               style={[
                 Theme.bgGreen,
                 Theme.fBlack,

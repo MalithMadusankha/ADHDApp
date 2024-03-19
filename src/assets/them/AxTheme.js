@@ -69,12 +69,28 @@ const AxTheme = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  justifySpaceBetween: {
+    justifyContent: 'space-between',
+  },
+
+  justifySpaceAround: {
+    justifyContent: 'space-around',
+  },
+
+  justifyStart: {
+    justifyContent: 'flex-start',
+  },
+
   alignItemCenter: {
     alignItems: 'center',
   },
 
   flexDirRow: {
     flexDirection: 'row',
+  },
+
+  flexDirRowReverse: {
+    flexDirection: 'row-reverse',
   },
 
   flexDirCol: {
@@ -93,8 +109,63 @@ const AxTheme = StyleSheet.create({
     textAlign: 'left',
   },
 
+  txtBlue: {
+    color: '#2121e0',
+  },
+
+  txtRed: {
+    color: '#e04d21',
+  },
+
+  // txtAlignCenter: {
+  //   textAlign: 'center',
+  // },
+
+  // txtAlignLeft: {
+  //   textAlign: 'left',
+  // },
+  m1: {
+    margin: '1%',
+  },
+  m2: {
+    margin: '2%',
+  },
+  m3: {
+    margin: '3%',
+  },
+  m4: {
+    margin: '4%',
+  },
+
   m5: {
-    margin: 5,
+    margin: '5%',
+  },
+
+  mx5: {
+    marginHorizontal: '5%',
+  },
+
+  mxa: {
+    marginHorizontal: 'auto',
+  },
+
+  mt_1: {
+    marginTop: '-1%',
+  },
+
+  mt_2: {
+    marginTop: '-2%',
+  },
+
+  mt_3: {
+    marginTop: '-3%',
+  },
+  mt_5: {
+    marginTop: '-5%',
+  },
+
+  mt_7: {
+    marginTop: '-7%',
   },
 
   mt1: {
@@ -229,6 +300,12 @@ const AxTheme = StyleSheet.create({
   ml7: {
     marginLeft: '7%',
   },
+  mr2: {
+    marginRight: '2%',
+  },
+  mr3: {
+    marginRight: '3%',
+  },
   mr5: {
     marginRight: '5%',
   },
@@ -257,6 +334,25 @@ const AxTheme = StyleSheet.create({
   },
   ps3: {
     paddingStart: '3%',
+  },
+
+  pt1: {
+    paddingTop: '1%',
+  },
+  pt2: {
+    paddingTop: '2%',
+  },
+  pt3: {
+    paddingTop: '3%',
+  },
+  pt4: {
+    paddingTop: '4%',
+  },
+  pt5: {
+    paddingTop: '5%',
+  },
+  pt11: {
+    paddingTop: '11%',
   },
 
   py1: {
@@ -294,28 +390,65 @@ const AxTheme = StyleSheet.create({
     backgroundColor: 'rgba(248, 248, 248, 0.548)',
   },
 
+  bgTransparent1: {
+    backgroundColor: 'rgba(248, 248, 248, 0.774)',
+  },
+
   bgRed: {
     backgroundColor: '#ff0000',
+  },
+
+  bgRed1: {
+    backgroundColor: '#F87777',
   },
 
   bgBlue: {
     backgroundColor: '#0000ff',
   },
 
+  bgLightGoldenrod: {
+    backgroundColor: '#FAFBD0',
+  },
+
+  bgBlue1: {
+    backgroundColor: '#3DE5DB',
+  },
+
   bgPurl: {
     backgroundColor: '#9f05cc',
+  },
+
+  bgPurl1: {
+    backgroundColor: '#ADBDF3',
+  },
+
+  bgPurl2: {
+    backgroundColor: '#C48BDF',
   },
 
   bgPink: {
     backgroundColor: '#ff00d5',
   },
 
+  bgPink1: {
+    backgroundColor: '#F58F8F',
+  },
+
   bgYellow: {
     backgroundColor: '#F5F86A',
+  },
+  bgYellow1: {
+    backgroundColor: '#EDE17A',
   },
 
   bgGreen: {
     backgroundColor: '#4EEE26',
+  },
+  bgGreen1: {
+    backgroundColor: '#62D11F',
+  },
+  bgLost: {
+    backgroundColor: '#6B7C3B',
   },
   bgBlack: {
     backgroundColor: '#000000',
