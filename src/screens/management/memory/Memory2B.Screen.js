@@ -16,8 +16,9 @@ const Memory2BScreen = ({navigation}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
-  const [isBook, setIsBook] = useState(0);
-  const [isPencil, setIsPencil] = useState(0);
+  const [isHorse, setIsHorse] = useState(0);
+  const [isBag, setIsBag] = useState(0);
+  const [isHouse, setIsHouse] = useState(0);
   const [startT, setStartT] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
@@ -36,13 +37,13 @@ const Memory2BScreen = ({navigation}) => {
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
     const game = {
       duration,
-      marks: isBook + isPencil,
-      totalMark: 2,
-      gameType: 1,
-      lavel: 1,
+      marks: isHouse + isHorse + isBag,
+      totalMark: 3,
+      gameType: 2,
+      lavel: 2,
     };
     // clear();
-    game.marks === 2
+    game.marks === 3
       ? navigation.navigate('Win', {game})
       : navigation.navigate('Lost', {game});
   };
@@ -129,10 +130,10 @@ const Memory2BScreen = ({navigation}) => {
           <View style={[TM.h5]} />
           {/* row 1 */}
           <View style={[TM.flexDirRow, TM.justifySpaceAround]}>
-            {isBook ? (
+            {isHorse === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
+                onPress={() => setIsHorse(1)}>
                 <Image
                   style={[styles.objGame2]}
                   source={require('../../../assets/img/game/horse-right.png')}
@@ -141,7 +142,7 @@ const Memory2BScreen = ({navigation}) => {
             ) : (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
+                onPress={() => setIsHorse(1)}>
                 <Image
                   style={[styles.objGame2]}
                   source={require('../../../assets/img/game/horse.png')}
@@ -163,10 +164,10 @@ const Memory2BScreen = ({navigation}) => {
                 source={require('../../../assets/img/game/car.png')}
               />
             </TouchableOpacity>
-            {isBook ? (
+            {isHouse === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
+                onPress={() => setIsHorse(1)}>
                 <Image
                   style={[styles.objGame]}
                   source={require('../../../assets/img/game/house-right.png')}
@@ -175,7 +176,7 @@ const Memory2BScreen = ({navigation}) => {
             ) : (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
+                onPress={() => setIsHouse(1)}>
                 <Image
                   style={[styles.objGame]}
                   source={require('../../../assets/img/game/home.png')}
@@ -187,10 +188,10 @@ const Memory2BScreen = ({navigation}) => {
           <View style={[TM.flexDirRow]} />
 
           <View style={[TM.flexDirRow, , TM.justifySpaceAround]}>
-            {isPencil ? (
+            {isBag === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsPencil(true)}>
+                onPress={() => setIsBag(1)}>
                 <Image
                   style={[styles.objGame1]}
                   source={require('../../../assets/img/game/bag-right.png')}
@@ -199,7 +200,7 @@ const Memory2BScreen = ({navigation}) => {
             ) : (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsPencil(true)}>
+                onPress={() => setIsBag(1)}>
                 <Image
                   style={[styles.objGame1]}
                   source={require('../../../assets/img/game/bag.png')}

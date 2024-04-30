@@ -10,6 +10,16 @@ export const COMPILATION_LEVEL = [
 export const CLEAN_TYPE = ['කාමර පිරිසිදු කිරීම', 'ඇඟ සේදීම'];
 export const ESTIMATED_CLEAN = [15, 10]; // morning, afternoon, evening, night - times
 
+export const WEEK_DAYS = [
+  'සඳුදා',
+  'අඟහරුවාදා',
+  'බදාදා',
+  'බ්‍රහස්පතින්දා',
+  'සිකුරාදා',
+  'සෙනසුරාදා',
+  'ඉරිදා',
+];
+
 // Games
 export const GAME_TYPE = [
   'වස්තුන් සොයමු',

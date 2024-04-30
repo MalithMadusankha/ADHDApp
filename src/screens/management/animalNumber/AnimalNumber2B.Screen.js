@@ -65,7 +65,7 @@ const AnimalNumber2BScreen = ({navigation}) => {
       marks: chosseObj1 + chosseObj2 + chosseObj3,
       totalMark: 3,
       gameType: 1,
-      lavel: 1,
+      lavel: 2,
     };
     // clear();
     game.marks === 3

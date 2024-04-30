@@ -37,6 +37,9 @@ import Memory2BScreen from '../screens/management/memory/Memory2B.Screen';
 import Memory2Screen from '../screens/management/memory/Memory2.Screen';
 import Memory3Screen from '../screens/management/memory/Memory3.Screen';
 import Memory3BScreen from '../screens/management/memory/Memory3B.Screen';
+import MatchLevel1Screen from '../screens/management/matchPhotos/MatchLevel1.Screen';
+import MatchLevel2Screen from '../screens/management/matchPhotos/MatchLevel2.Screen';
+import MatchLevel3Screen from '../screens/management/matchPhotos/MatchLevel3.Screen';
 
 const RootRoutes = () => {
   const Stack = createStackNavigator();
@@ -96,6 +99,11 @@ const RootRoutes = () => {
         <Stack.Screen name="Memory2B" component={Memory2BScreen} />
         <Stack.Screen name="Memory3" component={Memory3Screen} />
         <Stack.Screen name="Memory3B" component={Memory3BScreen} />
+
+        {/* match games */}
+        <Stack.Screen name="Match1" component={MatchLevel1Screen} />
+        <Stack.Screen name="Match2" component={MatchLevel2Screen} />
+        <Stack.Screen name="Match3" component={MatchLevel3Screen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

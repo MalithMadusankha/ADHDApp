@@ -88,7 +88,7 @@ const LavelScreen = ({navigation, route}) => {
                 } else if (gameType === 2) {
                   navigation.navigate(`Memory${game.lavel}`, {game});
                 } else {
-                  navigation.navigate(`FindObjLevel${game.lavel}`, {game});
+                  navigation.navigate(`Match${game.lavel}`, {game});
                 }
               }}
               style={[
@@ -136,7 +136,7 @@ const LavelScreen = ({navigation, route}) => {
                 } else if (gameType === 2) {
                   navigation.navigate(`Memory${game.lavel}`, {game});
                 } else {
-                  navigation.navigate(`FindObjLevel${game.lavel}`, {game});
+                  navigation.navigate(`Match${game.lavel}`, {game});
                 }
               }}
               style={[
@@ -184,7 +184,7 @@ const LavelScreen = ({navigation, route}) => {
                 } else if (gameType === 2) {
                   navigation.navigate(`Memory${game.lavel}`, {game});
                 } else {
-                  navigation.navigate(`FindObjLevel${game.lavel}`, {game});
+                  navigation.navigate(`Match${game.lavel}`, {game});
                 }
               }}
               style={[

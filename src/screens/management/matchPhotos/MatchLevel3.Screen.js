@@ -11,16 +11,24 @@ import {
 } from 'react-native';
 import TM from '../../../assets/them/AxTheme';
 import StopwatchGame from '../../../componet/StopwatchGame';
+import CatImg from '../../../assets/img/game/cat.png';
+import DishImg from '../../../assets/img/game/dish.png';
+import CornImg from '../../../assets/img/game/corn.png';
+import PengImg from '../../../assets/img/game/peng.png';
+import WatchImg from '../../../assets/img/game/watch.png';
 
-const Memory1BScreen = ({navigation}) => {
+const MatchLevel3Screen = ({navigation}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
-  const [isBook, setIsBook] = useState(0);
-  const [isPencil, setIsPencil] = useState(0);
+  const [countR, setCountR] = useState(0);
   const [startT, setStartT] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [PengImg, WatchImg, PengImg, CornImg];
+  const images1 = [DishImg, CatImg, WatchImg, DishImg];
 
   const start = () => {
     setIsRunning(true);
@@ -36,10 +44,10 @@ const Memory1BScreen = ({navigation}) => {
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
     const game = {
       duration,
-      marks: isBook + isPencil,
+      marks: 2 === currentImageIndex ? 2 : 0,
       totalMark: 2,
-      gameType: 2,
-      lavel: 1,
+      gameType: 3,
+      lavel: 3,
     };
     // clear();
     game.marks === 2
@@ -75,6 +83,17 @@ const Memory1BScreen = ({navigation}) => {
     start();
   }, []);
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // Calculate the next image index
+      setCountR(countR + 1);
+      const nextIndex = (currentImageIndex + 1) % images.length;
+      setCurrentImageIndex(nextIndex);
+    }, 2100); // Change image every 4 seconds
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
+  }, [currentImageIndex]); // eslint-disable-line
+
   return (
     <SafeAreaView>
       <ImageBackground
@@ -104,7 +123,7 @@ const Memory1BScreen = ({navigation}) => {
         <View style={[TM.flexDirRow]}>
           <Image
             style={[styles.obj]}
-            source={require('../../../assets/img/game/memory-headline.png')}
+            source={require('../../../assets/img/game/match-photo.png')}
           />
         </View>
 
@@ -112,7 +131,7 @@ const Memory1BScreen = ({navigation}) => {
         <View
           style={[
             TM.bgTransparent1,
-            {width: SCREEN_WIDTH * 0.9, height: SCREEN_HEIGHT * 0.6},
+            {width: SCREEN_WIDTH * 0.9, height: SCREEN_HEIGHT * 0.64},
             TM.p4,
             TM.borderRadius20,
           ]}>
@@ -122,90 +141,62 @@ const Memory1BScreen = ({navigation}) => {
           <View style={[TM.h3]} />
           <View style={[TM.flexDirRow, TM.alignItemCenter]}>
             <Text style={[TM.fBlack, TM.fBold, TM.f14]}>
-              පෙර ඔබ හදුනාගත් රූප පහතින් දැක්වෙන රූප අතර තිබේනම් ඒවා තෝරන්න
+              පළමුවෙන් ලබා දී ඇති පින්තූරය දෙස බලන්න එම රූපයම පහත තැඹිලි පාට
+              කොටුව තුළ දිස්වන විට පමණක් පහතින් ඇති නිල් පාට බොත්තම ඔබන්න.
             </Text>
           </View>
 
           <View style={[TM.h5]} />
           {/* row 1 */}
           <View style={[TM.flexDirRow, TM.justifySpaceAround]}>
-            {isBook ? (
-              <TouchableOpacity
-                style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
-                <Image
-                  style={[styles.objGame]}
-                  source={require('../../../assets/img/game/book-right.png')}
-                />
+            <View>
+              <TouchableOpacity style={[TM.p2, TM.m1, TM.borderRadius10]}>
+                <Image style={[styles.objGame]} source={PengImg} />
               </TouchableOpacity>
-            ) : (
-              <TouchableOpacity
-                style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
-                <Image
-                  style={[styles.objGame]}
-                  source={require('../../../assets/img/game/book.png')}
-                />
+              <TouchableOpacity style={[TM.p2, TM.m1, TM.borderRadius10]}>
+                <Image style={[styles.objGame3]} source={WatchImg} />
               </TouchableOpacity>
-            )}
-            <TouchableOpacity style={[TM.p2, TM.m1, TM.borderRadius10]}>
+            </View>
+            <TouchableOpacity
+              style={[TM.p2, TM.m1, TM.borderRadius10, TM.bgMain0]}>
               <Image
                 style={[styles.objGame]}
-                source={require('../../../assets/img/game/car.png')}
+                source={images[currentImageIndex]}
+              />
+              <Image
+                style={[styles.objGame3]}
+                source={images1[currentImageIndex]}
               />
             </TouchableOpacity>
           </View>
-          <View style={[TM.h5]} />
-          <View style={[TM.flexDirRow, TM.flexDirRowReverse]} />
+          <View style={[TM.h1]} />
 
-          <View style={[TM.justAlign]}>
-            {isPencil ? (
-              <TouchableOpacity
-                style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsPencil(true)}>
-                <Image
-                  style={[styles.objGame1]}
-                  source={require('../../../assets/img/game/pencil-right.png')}
-                />
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity
-                style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsPencil(true)}>
-                <Image
-                  style={[styles.objGame1]}
-                  source={require('../../../assets/img/game/pencil.png')}
-                />
-              </TouchableOpacity>
-            )}
-            <TouchableOpacity style={[TM.p2, TM.m1, TM.borderRadius10]}>
-              <Image
-                style={[styles.objGame]}
-                source={require('../../../assets/img/game/beare.png')}
-              />
+          <View style={[TM.justAlign, TM.flexDirRow]}>
+            <TouchableOpacity
+              style={[
+                TM.p2,
+                TM.mt10,
+                TM.borderRadius10,
+                TM.bgBlue,
+                TM.borderRadius100,
+                styles.objGame1,
+              ]}
+              onPress={next}
+            />
+            <TouchableOpacity
+              style={[
+                TM.mt10,
+                TM.ml5,
+                TM.borderRadius10,
+                TM.bgMain5,
+                TM.borderRadius100,
+                styles.objGame1,
+                TM.justAlign,
+              ]}>
+              <Text style={[TM.f30]}> {parseInt(countR / 4)}</Text>
             </TouchableOpacity>
           </View>
         </View>
-
-        {/* next button */}
-        <TouchableOpacity
-          onPress={next}
-          style={[
-            TM.bgTransparent1,
-            {width: SCREEN_WIDTH * 0.3, height: SCREEN_HEIGHT * 0.047},
-            TM.p4,
-            TM.borderRadius20,
-            TM.alignItemCenter,
-            styles.nextBtn,
-          ]}>
-          <View style={[TM.flexDirRow]}>
-            <Text style={[TM.fBlack, TM.fBold, TM.f18]}>ඊළඟ</Text>
-            <Image
-              style={[styles.next]}
-              source={require('../../../assets/icons/next-ic.png')}
-            />
-          </View>
-        </TouchableOpacity>
       </ImageBackground>
     </SafeAreaView>
   );
@@ -223,11 +214,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   objGame: {
-    height: 70,
-    width: 70,
+    height: 120,
+    width: 100,
+  },
+  objGame3: {
+    height: 80,
+    width: 100,
   },
   objGame1: {
-    height: 90,
+    height: 70,
     width: 70,
   },
   num: {
@@ -238,4 +233,4 @@ const styles = StyleSheet.create({
   backBtn: {position: 'absolute', top: 20, left: 20},
 });
 
-export default Memory1BScreen;
+export default MatchLevel3Screen;

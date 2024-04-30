@@ -24,7 +24,16 @@ const FindObjLevel1Screen = ({navigation}) => {
   const [chosseObj1, setChosseObj1] = useState(0);
   const [chosseObj2, setChosseObj2] = useState(0);
   const [chosseObj3, setChosseObj3] = useState(0);
+
+  const [wObj1, setWObj1] = useState(0);
+  const [wObj2, setWObj2] = useState(0);
+  const [wObj3, setWObj3] = useState(0);
+  const [wObj4, setWObj4] = useState(0);
+  const [wObj5, setWObj5] = useState(0);
+  const [wObj6, setWObj6] = useState(0);
+
   const [isNoCorrect, setIsNoCorrect] = useState(0);
+  const [countObj, setCountObj] = useState(0);
 
   const start = () => {
     setIsRunning(true);
@@ -50,7 +59,7 @@ const FindObjLevel1Screen = ({navigation}) => {
       duration,
       marks: chosseObj1 + chosseObj2 + chosseObj3 + isNoCorrect,
       totalMark: 5,
-      gameType: 1,
+      gameType: 0,
       lavel: 1,
     };
     // clear();
@@ -86,6 +95,13 @@ const FindObjLevel1Screen = ({navigation}) => {
   useEffect(() => {
     start();
   }, []);
+
+  const clickBtn = setVal => {
+    if (countObj < 3) {
+      setVal(1);
+    }
+    setCountObj(countObj + 1);
+  };
 
   return (
     <SafeAreaView>
@@ -152,7 +168,7 @@ const FindObjLevel1Screen = ({navigation}) => {
               </TouchableOpacity>
             ) : (
               <TouchableOpacity
-                onPress={() => setChosseObj1(1)}
+                onPress={() => clickBtn(setChosseObj1)}
                 style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
                 <Image
                   style={[styles.objGame]}
@@ -161,30 +177,63 @@ const FindObjLevel1Screen = ({navigation}) => {
               </TouchableOpacity>
             )}
 
-            <TouchableOpacity
-              style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
-              <Image
-                style={[styles.objGame]}
-                source={require('../../../assets/img/game/car.png')}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
-              <Image
-                style={[styles.objGame]}
-                source={require('../../../assets/img/game/drum.png')}
-              />
-            </TouchableOpacity>
+            {wObj1 === 1 ? (
+              <TouchableOpacity
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/wrong/w-car.png')}
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => clickBtn(setWObj1)}
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/car.png')}
+                />
+              </TouchableOpacity>
+            )}
+            {wObj2 === 1 ? (
+              <TouchableOpacity
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/wrong/w-drum.png')}
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => clickBtn(setWObj2)}
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/drum.png')}
+                />
+              </TouchableOpacity>
+            )}
           </View>
           {/* row 2 */}
           <View style={[TM.flexDirRow]}>
-            <TouchableOpacity
-              style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
-              <Image
-                style={[styles.objGame]}
-                source={require('../../../assets/img/game/car.png')}
-              />
-            </TouchableOpacity>
+            {wObj3 === 1 ? (
+              <TouchableOpacity
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/wrong/w-car.png')}
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => clickBtn(setWObj3)}
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/car.png')}
+                />
+              </TouchableOpacity>
+            )}
             {chosseObj2 === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
@@ -195,7 +244,7 @@ const FindObjLevel1Screen = ({navigation}) => {
               </TouchableOpacity>
             ) : (
               <TouchableOpacity
-                onPress={() => setChosseObj2(1)}
+                onPress={() => clickBtn(setChosseObj2)}
                 style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
                 <Image
                   style={[styles.objGame]}
@@ -203,30 +252,63 @@ const FindObjLevel1Screen = ({navigation}) => {
                 />
               </TouchableOpacity>
             )}
-            <TouchableOpacity
-              style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
-              <Image
-                style={[styles.objGame]}
-                source={require('../../../assets/img/game/house.png')}
-              />
-            </TouchableOpacity>
+            {wObj4 === 1 ? (
+              <TouchableOpacity
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/wrong/w-house.png')}
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => clickBtn(setWObj4)}
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/house.png')}
+                />
+              </TouchableOpacity>
+            )}
           </View>
           {/* row 3 */}
           <View style={[TM.flexDirRow]}>
-            <TouchableOpacity
-              style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
-              <Image
-                style={[styles.objGame]}
-                source={require('../../../assets/img/game/drum.png')}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
-              <Image
-                style={[styles.objGame]}
-                source={require('../../../assets/img/game/house.png')}
-              />
-            </TouchableOpacity>
+            {wObj5 === 1 ? (
+              <TouchableOpacity
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/wrong/w-drum.png')}
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => clickBtn(setWObj5)}
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/drum.png')}
+                />
+              </TouchableOpacity>
+            )}
+            {wObj6 === 1 ? (
+              <TouchableOpacity
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/wrong/w-house.png')}
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => clickBtn(setWObj6)}
+                style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
+                <Image
+                  style={[styles.objGame]}
+                  source={require('../../../assets/img/game/house.png')}
+                />
+              </TouchableOpacity>
+            )}
             {chosseObj3 === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
@@ -237,7 +319,7 @@ const FindObjLevel1Screen = ({navigation}) => {
               </TouchableOpacity>
             ) : (
               <TouchableOpacity
-                onPress={() => setChosseObj3(1)}
+                onPress={() => clickBtn(setChosseObj3)}
                 style={[TM.p2, TM.bgMain3, TM.m1, TM.borderRadius10]}>
                 <Image
                   style={[styles.objGame]}

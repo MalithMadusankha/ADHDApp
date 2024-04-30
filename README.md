@@ -1,4 +1,4 @@
-This is a new 
+This is a new
 
 # Getting Started
 
@@ -64,20 +64,21 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
+### UI Figma
+
+Games : `https://www.figma.com/file/AvAwoXfquVEyRzbG4MZUC9/Figma-Mobile-Design?type=design&node-id=38-6032&mode=design&t=XuCMg0qcYjxCb6ih-0`
 
 ## Screen Shots
 
-### Welcome 
+### Welcome
+
 ![welcome1](https://github.com/MalithMadusankha/ADHDApp/assets/78203677/b648d755-0a91-4ceb-9df7-1a7b4ca50218)
 ![welocome2](https://github.com/MalithMadusankha/ADHDApp/assets/78203677/78d3c380-ba8b-4c1a-b04d-a7fe84b369c4)
 
 ### Login
+
 ![login](https://github.com/MalithMadusankha/ADHDApp/assets/78203677/51f247c7-600f-4918-9a60-633bc169eaf9)
 
 ### Register
+
 ![register](https://github.com/MalithMadusankha/ADHDApp/assets/78203677/4130947b-0f72-4bcb-8f9a-06cb8f5162b0)
-
-
-
-
-

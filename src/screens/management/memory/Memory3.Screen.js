@@ -75,8 +75,8 @@ const Memory3Screen = ({navigation}) => {
           <View style={[TM.flexDirRow, TM.justifySpaceBetween]}>
             <TouchableOpacity style={[TM.p2, TM.m1, TM.borderRadius10]}>
               <Image
-                style={[styles.objGame]}
-                source={require('../../../assets/img/game/home.png')}
+                style={[styles.objGame3]}
+                source={require('../../../assets/img/game/baloon.png')}
               />
             </TouchableOpacity>
             <TouchableOpacity style={[TM.p2, TM.m1, TM.borderRadius10]}>
@@ -143,6 +143,10 @@ const styles = StyleSheet.create({
   objGame: {
     height: 70,
     width: 70,
+  },
+  objGame3: {
+    height: 100,
+    width: 55,
   },
   objGame1: {
     height: 90,

@@ -12,6 +12,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Theme from '../../assets/them/AxTheme';
+import {WEEK_DAYS} from '../../utility/ConstVaribales';
 
 const WeekDaysScreen = ({navigation}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
@@ -70,7 +71,7 @@ const WeekDaysScreen = ({navigation}) => {
           {/* Time Table */}
           <View style={[Theme.h14, Theme.flexDirRow]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Day')}
+              onPress={() => navigation.navigate('Day', {day: 0})}
               style={[
                 Theme.bgGreen1,
                 Theme.fBlack,
@@ -90,7 +91,9 @@ const WeekDaysScreen = ({navigation}) => {
                   source={require('../../assets/img/girl.png')}
                 />
               </View>
-              <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>සඳුදා</Text>
+              <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>
+                {WEEK_DAYS[0]}
+              </Text>
             </TouchableOpacity>
           </View>
 
@@ -98,7 +101,7 @@ const WeekDaysScreen = ({navigation}) => {
           {/* Time Table */}
           <View style={[Theme.h14, Theme.flexDirRow]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Day')}
+              onPress={() => navigation.navigate('Day', {day: 1})}
               style={[
                 Theme.bgYellow1,
                 Theme.fBlack,
@@ -119,7 +122,7 @@ const WeekDaysScreen = ({navigation}) => {
                 />
               </View>
               <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>
-                අඟහරුවාදා
+                {WEEK_DAYS[1]}
               </Text>
             </TouchableOpacity>
           </View>
@@ -127,7 +130,7 @@ const WeekDaysScreen = ({navigation}) => {
           {/* Time Table */}
           <View style={[Theme.h14, Theme.flexDirRow]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Day')}
+              onPress={() => navigation.navigate('Day', {day: 2})}
               style={[
                 Theme.bgPurl1,
                 Theme.fBlack,
@@ -147,14 +150,16 @@ const WeekDaysScreen = ({navigation}) => {
                   source={require('../../assets/img/girl.png')}
                 />
               </View>
-              <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>බදාදා</Text>
+              <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>
+                {WEEK_DAYS[2]}
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={[Theme.h1]} />
           {/* Time Table */}
           <View style={[Theme.h14, Theme.flexDirRow]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Day')}
+              onPress={() => navigation.navigate('Day', {day: 3})}
               style={[
                 Theme.bgLogin,
                 Theme.fBlack,
@@ -175,7 +180,7 @@ const WeekDaysScreen = ({navigation}) => {
                 />
               </View>
               <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>
-                බ්‍රහස්පතින්දා
+                {WEEK_DAYS[3]}
               </Text>
             </TouchableOpacity>
           </View>
@@ -184,7 +189,7 @@ const WeekDaysScreen = ({navigation}) => {
           {/* Time Table */}
           <View style={[Theme.h14, Theme.flexDirRow]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Day')}
+              onPress={() => navigation.navigate('Day', {day: 4})}
               style={[
                 Theme.bgPurl2,
                 Theme.fBlack,
@@ -205,7 +210,7 @@ const WeekDaysScreen = ({navigation}) => {
                 />
               </View>
               <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>
-                සිකුරාදා
+                {WEEK_DAYS[4]}
               </Text>
             </TouchableOpacity>
           </View>
@@ -214,7 +219,7 @@ const WeekDaysScreen = ({navigation}) => {
           {/* Time Table */}
           <View style={[Theme.h14, Theme.flexDirRow]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Day')}
+              onPress={() => navigation.navigate('Day', {day: 5})}
               style={[
                 Theme.bgPink1,
                 Theme.fBlack,
@@ -235,7 +240,7 @@ const WeekDaysScreen = ({navigation}) => {
                 />
               </View>
               <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>
-                සෙනසුරාදා
+                {WEEK_DAYS[5]}
               </Text>
             </TouchableOpacity>
           </View>
@@ -244,7 +249,7 @@ const WeekDaysScreen = ({navigation}) => {
           {/* Time Table */}
           <View style={[Theme.h14, Theme.flexDirRow]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Day')}
+              onPress={() => navigation.navigate('Day', {day: 6})}
               style={[
                 Theme.bgRed1,
                 Theme.fBlack,
@@ -264,7 +269,9 @@ const WeekDaysScreen = ({navigation}) => {
                   source={require('../../assets/img/girl.png')}
                 />
               </View>
-              <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>ඉරිදා</Text>
+              <Text style={[Theme.fBlack, Theme.fBold, Theme.f20]}>
+                {WEEK_DAYS[6]}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -16,8 +16,10 @@ const Memory3BScreen = ({navigation}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
-  const [isBook, setIsBook] = useState(0);
-  const [isPencil, setIsPencil] = useState(0);
+  const [isBaloon, setIsBaloon] = useState(0);
+  const [isFlower, setIsFlower] = useState(0);
+  const [isShose, setIsShose] = useState(0);
+  const [isDis, setIsDis] = useState(0);
   const [startT, setStartT] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
@@ -36,13 +38,13 @@ const Memory3BScreen = ({navigation}) => {
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
     const game = {
       duration,
-      marks: isBook + isPencil,
-      totalMark: 2,
-      gameType: 1,
-      lavel: 1,
+      marks: isBaloon + isFlower + isDis + isShose,
+      totalMark: 4,
+      gameType: 2,
+      lavel: 3,
     };
     // clear();
-    game.marks === 2
+    game.marks === 4
       ? navigation.navigate('Win', {game})
       : navigation.navigate('Lost', {game});
   };
@@ -129,19 +131,19 @@ const Memory3BScreen = ({navigation}) => {
           <View style={[TM.h5]} />
           {/* row 1 */}
           <View style={[TM.flexDirRow, TM.justifySpaceAround]}>
-            {isBook ? (
+            {isBaloon === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
+                onPress={() => setIsBaloon(1)}>
                 <Image
-                  style={[styles.objGame2]}
+                  style={[styles.objGame3]}
                   source={require('../../../assets/img/game/baloon-right.png')}
                 />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
+                onPress={() => setIsBaloon(1)}>
                 <Image
                   style={[styles.objGame2]}
                   source={require('../../../assets/img/game/baloon.png')}
@@ -163,10 +165,10 @@ const Memory3BScreen = ({navigation}) => {
                 source={require('../../../assets/img/game/home.png')}
               />
             </TouchableOpacity>
-            {isBook ? (
+            {isDis === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
+                onPress={() => setIsDis(1)}>
                 <Image
                   style={[styles.objGame]}
                   source={require('../../../assets/img/game/dis-right.png')}
@@ -175,7 +177,7 @@ const Memory3BScreen = ({navigation}) => {
             ) : (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsBook(true)}>
+                onPress={() => setIsDis(1)}>
                 <Image
                   style={[styles.objGame]}
                   source={require('../../../assets/img/game/dish.png')}
@@ -187,10 +189,10 @@ const Memory3BScreen = ({navigation}) => {
           <View style={[TM.flexDirRow]} />
 
           <View style={[TM.flexDirRow, , TM.justifySpaceAround]}>
-            {isPencil ? (
+            {isFlower === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsPencil(true)}>
+                onPress={() => setIsFlower(1)}>
                 <Image
                   style={[styles.objGame1]}
                   source={require('../../../assets/img/game/flower-right.png')}
@@ -199,17 +201,17 @@ const Memory3BScreen = ({navigation}) => {
             ) : (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsPencil(true)}>
+                onPress={() => setIsFlower(1)}>
                 <Image
                   style={[styles.objGame1]}
                   source={require('../../../assets/img/game/flower.png')}
                 />
               </TouchableOpacity>
             )}
-            {isPencil ? (
+            {isShose === 1 ? (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsPencil(true)}>
+                onPress={() => setIsShose(1)}>
                 <Image
                   style={[styles.objGame1]}
                   source={require('../../../assets/img/game/shose-right.png')}
@@ -218,7 +220,7 @@ const Memory3BScreen = ({navigation}) => {
             ) : (
               <TouchableOpacity
                 style={[TM.p2, TM.m1, TM.borderRadius10]}
-                onPress={() => setIsPencil(true)}>
+                onPress={() => setIsShose(1)}>
                 <Image
                   style={[styles.objGame1]}
                   source={require('../../../assets/img/game/shose.png')}
@@ -274,6 +276,10 @@ const styles = StyleSheet.create({
   objGame2: {
     height: 100,
     width: 60,
+  },
+  objGame3: {
+    height: 100,
+    width: 55,
   },
   num: {
     height: 60,

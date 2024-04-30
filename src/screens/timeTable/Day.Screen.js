@@ -12,11 +12,13 @@ import {
   ScrollView,
 } from 'react-native';
 import Theme from '../../assets/them/AxTheme';
-import {CLEAN_TYPE, DAY_TYPE} from '../../utility/ConstVaribales';
+import {CLEAN_TYPE, DAY_TYPE, WEEK_DAYS} from '../../utility/ConstVaribales';
 
-const DayScreen = ({navigation}) => {
+const DayScreen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
+
+  const {day} = route.params;
 
   const css = {
     input: {
@@ -68,7 +70,7 @@ const DayScreen = ({navigation}) => {
             Theme.alignItemCenter,
           ]}>
           <Text style={[Theme.fBlack, Theme.fBold, Theme.f18, Theme.h5]}>
-            සඳුදා
+            {WEEK_DAYS[day]}
           </Text>
           <View style={[Theme.h1]} />
           {/* Time Table */}
