@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {
-  TextInput,
   Text,
   StyleSheet,
   View,
@@ -9,15 +8,10 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native';
 import TM from '../../../assets/them/AxTheme';
 import Stopwatch from '../../../componet/Stopwatch';
-import {
-  CLEAN_TYPE,
-  DAY_TYPE,
-  ESTIMATED_CLEAN,
-} from '../../../utility/ConstVaribales';
+import {CLEAN_TYPE, ESTIMATED_CLEAN} from '../../../utility/ConstVaribales';
 
 const CleanTimingScreen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
@@ -129,6 +123,7 @@ const CleanTimingScreen = ({navigation, route}) => {
             />
           </View>
         </TouchableOpacity>
+
         <View
           style={[
             TM.mt10,

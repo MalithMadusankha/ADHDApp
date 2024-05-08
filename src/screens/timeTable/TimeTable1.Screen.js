@@ -91,6 +91,7 @@ const TimeTable1Screen = ({navigation}) => {
 
           {/* Time table 1 */}
           <TouchableOpacity
+            onPress={() => navigation.navigate('Skill')}
             style={[
               Theme.mt10,
               Theme.bgTransparent1,
@@ -150,6 +151,7 @@ const TimeTable1Screen = ({navigation}) => {
 
           {/* Time table 1 */}
           <TouchableOpacity
+            onPress={() => navigation.navigate('Skill')}
             style={[
               Theme.bgTransparent1,
               {width: SCREEN_WIDTH * 0.4, height: SCREEN_HEIGHT * 0.17},
