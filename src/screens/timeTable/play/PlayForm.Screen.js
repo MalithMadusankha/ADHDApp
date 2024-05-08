@@ -17,15 +17,16 @@ import {
   DAY_TYPE,
   SKILL_LEVEL,
 } from '../../../utility/ConstVaribales';
+import {AddPlay} from '../../../service/TimeTableService';
 
 const PlayFormScreen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
-  const [intersting, setIntersting] = useState(SKILL_LEVEL[0]);
-  const [understanding, setUnderstanding] = useState(SKILL_LEVEL[0]);
-  const [compilation, setCompilation] = useState(COMPILATION_LEVEL[0]);
-  const [collaboratively, setCollaboratively] = useState(SKILL_LEVEL[0]);
+  const [intersting, setIntersting] = useState(0);
+  const [understanding, setUnderstanding] = useState(0);
+  const [compilation, setCompilation] = useState(0);
+  const [collaboratively, setCollaboratively] = useState(0);
   const [isDisplay, setIsDisplay] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
@@ -47,9 +48,30 @@ const PlayFormScreen = ({navigation, route}) => {
     lock: {width: 20, height: 25, marginHorizontal: '3%'},
   };
 
-  const submitHandler = () => {
-    const activityType = 'play';
-    Alert.alert('දත්ත සුරකින ලදී', activityType);
+  const submitHandler = async () => {
+    try {
+      const {duration, day, dayType, estimate} = activity;
+
+      const dataObj = {
+        intersting,
+        understanding,
+        compilation,
+        collaboratively,
+        duration, // seconds
+        day,
+        dayType,
+        estimate,
+      };
+      const res = await AddPlay(dataObj);
+
+      if (res && res.data.status === 'success') {
+        console.log(res.data.status);
+        Alert.alert('දත්ත සුරකින ලදී');
+        navigation.navigate('Day', {day});
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -119,7 +141,7 @@ const PlayFormScreen = ({navigation, route}) => {
               <Picker
                 selectedValue={intersting}
                 onValueChange={(itemValue, itemIndex) =>
-                  setIntersting(itemValue)
+                  setIntersting(itemIndex)
                 }
                 style={[TM.bgYellow1]}>
                 {SKILL_LEVEL.map((level, i) => (
@@ -142,7 +164,7 @@ const PlayFormScreen = ({navigation, route}) => {
               <Picker
                 selectedValue={understanding}
                 onValueChange={(itemValue, itemIndex) =>
-                  setUnderstanding(itemValue)
+                  setUnderstanding(itemIndex)
                 }
                 style={[TM.bgMain3]}>
                 {SKILL_LEVEL.map((level, i) => (
@@ -165,7 +187,7 @@ const PlayFormScreen = ({navigation, route}) => {
               <Picker
                 selectedValue={compilation}
                 onValueChange={(itemValue, itemIndex) =>
-                  setCompilation(itemValue)
+                  setCompilation(itemIndex)
                 }
                 style={[TM.bgMain5]}>
                 {COMPILATION_LEVEL.map((level, i) => (
@@ -188,7 +210,7 @@ const PlayFormScreen = ({navigation, route}) => {
               <Picker
                 selectedValue={collaboratively}
                 onValueChange={(itemValue, itemIndex) =>
-                  setCollaboratively(itemValue)
+                  setCollaboratively(itemIndex)
                 }
                 style={[TM.bgMain7]}>
                 {SKILL_LEVEL.map((level, i) => (

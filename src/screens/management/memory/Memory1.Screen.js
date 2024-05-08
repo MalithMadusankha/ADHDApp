@@ -11,12 +11,13 @@ import {
 } from 'react-native';
 import TM from '../../../assets/them/AxTheme';
 
-const Memory1Screen = ({navigation}) => {
+const Memory1Screen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
+  const {game} = route.params;
+
   const next = () => {
-    const game = {};
     navigation.navigate('Memory1B', {game});
   };
 

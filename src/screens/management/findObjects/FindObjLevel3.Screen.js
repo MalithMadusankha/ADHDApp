@@ -42,7 +42,7 @@ const FindObjLevel3Screen = ({navigation}) => {
   const [wObj10, setWObj10] = useState(0);
 
   const clickBtn = setVal => {
-    if (countObj < 6) {
+    if (countObj < 5) {
       setVal(1);
     }
     setCountObj(countObj + 1);
@@ -68,7 +68,7 @@ const FindObjLevel3Screen = ({navigation}) => {
   const next = () => {
     stop();
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
-    const game = {
+    const gameObj = {
       duration,
       marks:
         chosseObj1 +
@@ -84,9 +84,9 @@ const FindObjLevel3Screen = ({navigation}) => {
     };
     console.log('dd : ', duration);
     // clear();
-    isNoCorrect === 0
-      ? navigation.navigate('Lost', {game})
-      : navigation.navigate('Win', {game});
+    gameObj.marks < 5
+      ? navigation.navigate('Lost', {gameObj})
+      : navigation.navigate('Win', {gameObj});
   };
 
   const formatTime = timeInSeconds => {

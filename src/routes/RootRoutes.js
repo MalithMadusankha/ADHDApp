@@ -40,6 +40,8 @@ import Memory3BScreen from '../screens/management/memory/Memory3B.Screen';
 import MatchLevel1Screen from '../screens/management/matchPhotos/MatchLevel1.Screen';
 import MatchLevel2Screen from '../screens/management/matchPhotos/MatchLevel2.Screen';
 import MatchLevel3Screen from '../screens/management/matchPhotos/MatchLevel3.Screen';
+import CoachingScreen from '../screens/timeTable/Coaching.Screen';
+import GameAnalysisScreen from '../screens/management/GameAnalysis.Screen';
 
 const RootRoutes = () => {
   const Stack = createStackNavigator();
@@ -70,10 +72,12 @@ const RootRoutes = () => {
         <Stack.Screen name="PlayForm" component={PlayFormScreen} />
         <Stack.Screen name="CleanTiming" component={CleanTimingScreen} />
         <Stack.Screen name="CleanForm" component={CleanFormScreen} />
+        <Stack.Screen name="Coaching" component={CoachingScreen} />
 
         {/* Teaching Management */}
         <Stack.Screen name="GameMenu" component={GameMenuScreen} />
         <Stack.Screen name="Lavel" component={LavelScreen} />
+        <Stack.Screen name="GameAnalysis" component={GameAnalysisScreen} />
         {/* find object games */}
         <Stack.Screen name="FindObjLevel1" component={FindObjLevel1Screen} />
         <Stack.Screen name="FindObjLevel2" component={FindObjLevel2Screen} />

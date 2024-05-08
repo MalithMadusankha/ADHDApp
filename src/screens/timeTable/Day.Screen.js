@@ -78,7 +78,12 @@ const DayScreen = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 const dayType = 0;
-                navigation.navigate('FoodTiming', {dayType});
+                const dayObj = {
+                  day,
+                  dayType,
+                  activityType: 'food',
+                };
+                navigation.navigate('FoodTiming', {dayObj});
               }}
               style={[
                 Theme.bgGreen1,
@@ -111,7 +116,11 @@ const DayScreen = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 const dayType = 0;
-                navigation.navigate('PlayTiming', {dayType});
+                const dayObj = {
+                  day,
+                  dayType,
+                };
+                navigation.navigate('PlayTiming', {dayObj});
               }}
               style={[
                 Theme.bgYellow1,
@@ -143,7 +152,12 @@ const DayScreen = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 const dayType = 1;
-                navigation.navigate('FoodTiming', {dayType});
+                const dayObj = {
+                  day,
+                  dayType,
+                  activityType: 'food',
+                };
+                navigation.navigate('FoodTiming', {dayObj});
               }}
               style={[
                 Theme.bgPurl1,
@@ -175,7 +189,13 @@ const DayScreen = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 const cleanType = 0;
-                navigation.navigate('CleanTiming', {cleanType});
+                const dayObj = {
+                  day,
+                  dayType: 1,
+                  activityType: 'room_clean',
+                  cleanType,
+                };
+                navigation.navigate('CleanTiming', {dayObj});
               }}
               style={[
                 Theme.bgLogin,
@@ -208,7 +228,11 @@ const DayScreen = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 const dayType = 2;
-                navigation.navigate('PlayTiming', {dayType});
+                const dayObj = {
+                  day,
+                  dayType,
+                };
+                navigation.navigate('PlayTiming', {dayObj});
               }}
               style={[
                 Theme.bgPurl2,
@@ -241,7 +265,13 @@ const DayScreen = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 const cleanType = 1;
-                navigation.navigate('CleanTiming', {cleanType});
+                const dayObj = {
+                  day,
+                  dayType: 2,
+                  activityType: 'wash',
+                  cleanType,
+                };
+                navigation.navigate('CleanTiming', {dayObj});
               }}
               style={[
                 Theme.bgPink1,
@@ -274,7 +304,12 @@ const DayScreen = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 const dayType = 3;
-                navigation.navigate('FoodTiming', {dayType});
+                const dayObj = {
+                  day,
+                  dayType,
+                  activityType: 'food',
+                };
+                navigation.navigate('FoodTiming', {dayObj});
               }}
               style={[
                 Theme.bgRed1,

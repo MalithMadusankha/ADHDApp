@@ -40,7 +40,7 @@ const MatchLevel2Screen = ({navigation}) => {
   const next = () => {
     stop();
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
-    const game = {
+    const gameObj = {
       duration,
       marks: 3 === currentImageIndex ? 2 : 0,
       totalMark: 2,
@@ -48,9 +48,9 @@ const MatchLevel2Screen = ({navigation}) => {
       lavel: 2,
     };
     // clear();
-    game.marks === 2
-      ? navigation.navigate('Win', {game})
-      : navigation.navigate('Lost', {game});
+    gameObj.marks === 2
+      ? navigation.navigate('Win', {gameObj})
+      : navigation.navigate('Lost', {gameObj});
   };
 
   const formatTime = timeInSeconds => {

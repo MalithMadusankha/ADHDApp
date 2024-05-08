@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {
-  TextInput,
   Text,
   StyleSheet,
   View,
@@ -10,11 +9,18 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import Theme from '../../assets/them/AxTheme';
+import TM from '../../assets/them/AxTheme';
+import {GetGameLevel} from '../../service/GameService';
+import LockImg from '../../assets/img/game/lock.png';
+import {useFocusEffect} from '@react-navigation/native';
+import {GetIswin} from './helper/ManageGameLevels';
 
 const LavelScreen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
+  const [level1, setLevel1] = useState(0);
+  const [level2, setLevel2] = useState(0);
+  const [level3, setLevel3] = useState(0);
 
   const {gameType} = route.params;
 
@@ -33,25 +39,75 @@ const LavelScreen = ({navigation, route}) => {
     lock: {width: 20, height: 25, marginHorizontal: '3%'},
   };
 
+  useEffect(() => {
+    const getLevels = async () => {
+      try {
+        console.log('run useEffect');
+        const l1 = await GetIswin(gameType, 1);
+        setLevel1(l1);
+        console.log('L 1', l1);
+        const l2 = await GetIswin(gameType, 2);
+        setLevel2(l2);
+        const l3 = await GetIswin(gameType, 3);
+        setLevel3(l3);
+        console.log('L 2', l2);
+        console.log('L 3', l3);
+      } catch (error) {
+        console.log('Error fetching levels:', error);
+      }
+    };
+
+    getLevels();
+  }, [gameType]);
+
+  // Use useFocusEffect to fetch levels when screen comes into focus
+  useFocusEffect(
+    React.useCallback(() => {
+      const getLevels = async () => {
+        try {
+          console.log('run useFocusEffect');
+          const l1 = await GetIswin(gameType, 1);
+          setLevel1(l1);
+          const l2 = await GetIswin(gameType, 2);
+          setLevel2(l2);
+          const l3 = await GetIswin(gameType, 3);
+          setLevel3(l3);
+        } catch (error) {
+          console.log('Error fetching levels:', error);
+        }
+      };
+
+      getLevels();
+    }, [gameType]),
+  );
+
+  const fetchGameLevel = async () => {
+    try {
+      const res = await GetGameLevel(gameType);
+      console.log('l == ', res.data.result);
+      // setLevel(res.data.result);
+    } catch (error) {}
+  };
+
   return (
     <SafeAreaView>
       <ImageBackground
-        imageStyle={[Theme.w100, Theme.h100, Theme.justAlign]}
-        style={[Theme.w100, Theme.h100, Theme.justAlign]}
+        imageStyle={[TM.w100, TM.h100, TM.justAlign]}
+        style={[TM.w100, TM.h100, TM.justAlign]}
         source={require('../../assets/img/mgt-bg2.png')}>
         {/* back button */}
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={[
-            Theme.bgTransparent1,
+            TM.bgTransparent1,
             {width: SCREEN_WIDTH * 0.3, height: SCREEN_HEIGHT * 0.047},
-            Theme.p4,
-            Theme.borderRadius20,
-            Theme.alignItemCenter,
+            TM.p4,
+            TM.borderRadius20,
+            TM.alignItemCenter,
             styles.backBtn,
           ]}>
-          <View style={[Theme.flexDirRow]}>
-            <Text style={[Theme.fBlack, Theme.fBold, Theme.f18]}>ආපසු</Text>
+          <View style={[TM.flexDirRow]}>
+            <Text style={[TM.fBlack, TM.fBold, TM.f18]}>ආපසු</Text>
             <Image
               style={[styles.next]}
               source={require('../../assets/icons/back-ic.png')}
@@ -59,20 +115,20 @@ const LavelScreen = ({navigation, route}) => {
           </View>
         </TouchableOpacity>
 
-        <View style={Theme.h35} />
+        <View style={TM.h35} />
 
         <View
           style={[
-            Theme.mt10,
-            Theme.bgTransparent,
-            {width: SCREEN_WIDTH * 0.9, height: SCREEN_HEIGHT * 0.4},
-            Theme.p4,
-            Theme.borderRadius20,
-            Theme.alignItemCenter,
+            TM.mt10,
+            TM.bgTransparent,
+            {width: SCREEN_WIDTH * 0.9, height: SCREEN_HEIGHT * 0.45},
+            TM.p4,
+            TM.borderRadius20,
+            TM.alignItemCenter,
           ]}>
-          <View style={[Theme.h10]} />
+          <View style={[TM.h7]} />
           {/* Lavel 1 */}
-          <View style={[Theme.h20, Theme.flexDirRow]}>
+          <View style={[TM.h18, TM.flexDirRow]}>
             <TouchableOpacity
               onPress={() => {
                 const game = {
@@ -92,129 +148,241 @@ const LavelScreen = ({navigation, route}) => {
                 }
               }}
               style={[
-                Theme.bgMain3,
-                Theme.fBlack,
+                TM.bgMain3,
+                TM.fBlack,
                 css.btn,
-                Theme.borderRadius15,
-                Theme.alignItemCenter,
-                Theme.flexDirRow,
+                TM.borderRadius15,
+                TM.alignItemCenter,
+                TM.flexDirRow,
               ]}>
               <View
                 style={[
-                  Theme.justifyCenter,
-                  Theme.px3,
-                  Theme.borderRadiusStart15,
-                  Theme.alignItemCenter,
-                  Theme.w100,
+                  TM.justifyCenter,
+                  TM.px3,
+                  TM.borderRadiusStart15,
+                  TM.alignItemCenter,
+                  TM.w100,
                 ]}>
-                <Text
-                  style={[
-                    Theme.fBlack,
-                    Theme.fBold,
-                    Theme.f20,
-                    Theme.txtAlignCenter,
-                  ]}>
+                <Text style={[TM.fBlack, TM.fBold, TM.f20, TM.txtAlignCenter]}>
                   අදියර 01
                 </Text>
               </View>
             </TouchableOpacity>
           </View>
 
-          <View style={[Theme.h8]} />
+          <View style={[TM.h5]} />
           {/* Lavel 2 */}
-          <View style={[Theme.h20, Theme.flexDirRow]}>
-            <TouchableOpacity
-              onPress={() => {
-                const game = {
-                  lavel: 2,
-                  gameType,
-                };
-                if (gameType === 0) {
-                  navigation.navigate(`FindObjLevel${game.lavel}`, {game});
-                } else if (gameType === 1) {
-                  navigation.navigate(`AnimalNumber${game.lavel}`, {game});
-                } else if (gameType === 2) {
-                  navigation.navigate(`Memory${game.lavel}`, {game});
-                } else {
-                  navigation.navigate(`Match${game.lavel}`, {game});
-                }
-              }}
-              style={[
-                Theme.bgMain4,
-                Theme.fBlack,
-                css.btn,
-                Theme.borderRadius15,
-                Theme.alignItemCenter,
-                Theme.flexDirRow,
-              ]}>
-              <View
+          {level1 ? (
+            <View style={[TM.h18, TM.flexDirRow]}>
+              <TouchableOpacity
+                onPress={() => {
+                  const game = {
+                    lavel: 2,
+                    gameType,
+                  };
+                  if (gameType === 0) {
+                    navigation.navigate(`FindObjLevel${game.lavel}`, {game});
+                  } else if (gameType === 1) {
+                    navigation.navigate(`AnimalNumber${game.lavel}`, {game});
+                  } else if (gameType === 2) {
+                    navigation.navigate(`Memory${game.lavel}`, {game});
+                  } else {
+                    navigation.navigate(`Match${game.lavel}`, {game});
+                  }
+                }}
                 style={[
-                  Theme.justifyCenter,
-                  Theme.px3,
-                  Theme.borderRadiusStart15,
-                  Theme.alignItemCenter,
-                  Theme.w100,
+                  TM.bgMain4,
+                  TM.fBlack,
+                  css.btn,
+                  TM.borderRadius15,
+                  TM.alignItemCenter,
+                  TM.flexDirRow,
                 ]}>
-                <Text
+                <View
                   style={[
-                    Theme.fBlack,
-                    Theme.fBold,
-                    Theme.f20,
-                    Theme.txtAlignCenter,
+                    TM.justifyCenter,
+                    TM.px3,
+                    TM.borderRadiusStart15,
+                    TM.w100,
+                    TM.flexDirRow,
+                    TM.alignItemCenter,
                   ]}>
-                  අදියර 02
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+                  <Text
+                    style={[TM.fBlack, TM.fBold, TM.f20, TM.txtAlignCenter]}>
+                    අදියර 02
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View style={[TM.h18, TM.flexDirRow]}>
+              <TouchableOpacity
+                style={[
+                  TM.bgMain4,
+                  TM.fBlack,
+                  css.btn,
+                  TM.borderRadius15,
+                  TM.alignItemCenter,
+                  TM.flexDirRow,
+                ]}>
+                <View
+                  style={[
+                    TM.justifyCenter,
+                    TM.px3,
+                    TM.borderRadiusStart15,
+                    TM.w100,
+                    TM.flexDirRow,
+                    TM.alignItemCenter,
+                  ]}>
+                  <Text
+                    style={[TM.fBlack, TM.fBold, TM.f20, TM.txtAlignCenter]}>
+                    අදියර 02
+                  </Text>
+                  <Image source={LockImg} style={styles.lock} />
+                </View>
+              </TouchableOpacity>
+            </View>
+          )}
 
-          <View style={[Theme.h8]} />
+          <View style={[TM.h5]} />
           {/* Lavel 3 */}
-          <View style={[Theme.h20, Theme.flexDirRow]}>
-            <TouchableOpacity
-              onPress={() => {
-                const game = {
-                  lavel: 3,
-                  gameType,
-                };
-                if (gameType === 0) {
-                  navigation.navigate(`FindObjLevel${game.lavel}`, {game});
-                } else if (gameType === 1) {
-                  navigation.navigate(`AnimalNumber${game.lavel}`, {game});
-                } else if (gameType === 2) {
-                  navigation.navigate(`Memory${game.lavel}`, {game});
-                } else {
-                  navigation.navigate(`Match${game.lavel}`, {game});
-                }
-              }}
-              style={[
-                Theme.bgMain5,
-                Theme.fBlack,
-                css.btn,
-                Theme.borderRadius15,
-                Theme.alignItemCenter,
-                Theme.flexDirRow,
-              ]}>
-              <View
+          {level2 ? (
+            <View style={[TM.h18, TM.flexDirRow]}>
+              <TouchableOpacity
+                onPress={() => {
+                  const game = {
+                    lavel: 3,
+                    gameType,
+                  };
+                  if (gameType === 0) {
+                    navigation.navigate(`FindObjLevel${game.lavel}`, {game});
+                  } else if (gameType === 1) {
+                    navigation.navigate(`AnimalNumber${game.lavel}`, {game});
+                  } else if (gameType === 2) {
+                    navigation.navigate(`Memory${game.lavel}`, {game});
+                  } else {
+                    navigation.navigate(`Match${game.lavel}`, {game});
+                  }
+                }}
                 style={[
-                  Theme.justifyCenter,
-                  Theme.px3,
-                  Theme.borderRadiusStart15,
-                  Theme.alignItemCenter,
-                  Theme.w100,
+                  TM.bgMain5,
+                  TM.fBlack,
+                  css.btn,
+                  TM.borderRadius15,
+                  TM.alignItemCenter,
+                  TM.flexDirRow,
                 ]}>
-                <Text
+                <View
                   style={[
-                    Theme.fBlack,
-                    Theme.fBold,
-                    Theme.f20,
-                    Theme.txtAlignCenter,
+                    TM.justifyCenter,
+                    TM.px3,
+                    TM.borderRadiusStart15,
+                    TM.alignItemCenter,
+                    TM.w100,
+                    TM.flexDirRow,
                   ]}>
-                  අදියර 03
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+                  <Text
+                    style={[TM.fBlack, TM.fBold, TM.f20, TM.txtAlignCenter]}>
+                    අදියර 03
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View style={[TM.h18, TM.flexDirRow]}>
+              <TouchableOpacity
+                style={[
+                  TM.bgMain5,
+                  TM.fBlack,
+                  css.btn,
+                  TM.borderRadius15,
+                  TM.alignItemCenter,
+                  TM.flexDirRow,
+                ]}>
+                <View
+                  style={[
+                    TM.justifyCenter,
+                    TM.px3,
+                    TM.borderRadiusStart15,
+                    TM.alignItemCenter,
+                    TM.w100,
+                    TM.flexDirRow,
+                  ]}>
+                  <Text
+                    style={[TM.fBlack, TM.fBold, TM.f20, TM.txtAlignCenter]}>
+                    අදියර 03
+                  </Text>
+                  <Image source={LockImg} style={styles.lock} />
+                </View>
+              </TouchableOpacity>
+            </View>
+          )}
+
+          <View style={[TM.h5]} />
+          {/* Analysis 3 */}
+          {level3 ? (
+            <View style={[TM.h18, TM.flexDirRow]}>
+              <TouchableOpacity
+                onPress={() => {
+                  const game = {
+                    lavel: 3,
+                    gameType,
+                  };
+                  navigation.navigate('GameAnalysis', {game});
+                }}
+                style={[
+                  TM.bgMain0,
+                  TM.fBlack,
+                  css.btn,
+                  TM.borderRadius15,
+                  TM.alignItemCenter,
+                  TM.flexDirRow,
+                ]}>
+                <View
+                  style={[
+                    TM.justifyCenter,
+                    TM.px3,
+                    TM.borderRadiusStart15,
+                    TM.alignItemCenter,
+                    TM.w100,
+                    TM.flexDirRow,
+                  ]}>
+                  <Text
+                    style={[TM.fBlack, TM.fBold, TM.f20, TM.txtAlignCenter]}>
+                    විශ්ලේෂණය
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View style={[TM.h18, TM.flexDirRow]}>
+              <TouchableOpacity
+                style={[
+                  TM.bgMain0,
+                  TM.fBlack,
+                  css.btn,
+                  TM.borderRadius15,
+                  TM.alignItemCenter,
+                  TM.flexDirRow,
+                ]}>
+                <View
+                  style={[
+                    TM.justifyCenter,
+                    TM.px3,
+                    TM.borderRadiusStart15,
+                    TM.alignItemCenter,
+                    TM.w100,
+                    TM.flexDirRow,
+                  ]}>
+                  <Text
+                    style={[TM.fBlack, TM.fBold, TM.f20, TM.txtAlignCenter]}>
+                    විශ්ලේෂණය
+                  </Text>
+                  <Image source={LockImg} style={styles.lock} />
+                </View>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -232,6 +400,7 @@ const styles = StyleSheet.create({
     width: 90,
     marginLeft: 10,
   },
+  lock: {width: 30, height: 30, marginLeft: 20},
   nextBtn: {position: 'absolute', bottom: 20, right: 20},
   backBtn: {position: 'absolute', top: 20, left: 20},
 });
