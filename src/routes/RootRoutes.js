@@ -42,6 +42,7 @@ import MatchLevel2Screen from '../screens/management/matchPhotos/MatchLevel2.Scr
 import MatchLevel3Screen from '../screens/management/matchPhotos/MatchLevel3.Screen';
 import CoachingScreen from '../screens/timeTable/Coaching.Screen';
 import GameAnalysisScreen from '../screens/management/GameAnalysis.Screen';
+import SkillScreen from '../screens/timeTable/Skill.Screen';
 
 const RootRoutes = () => {
   const Stack = createStackNavigator();
@@ -64,6 +65,7 @@ const RootRoutes = () => {
         <Stack.Screen name="TimeTable1" component={TimeTable1Screen} />
         <Stack.Screen name="WeekDays" component={WeekDaysScreen} />
         <Stack.Screen name="Day" component={DayScreen} />
+        <Stack.Screen name="Skill" component={SkillScreen} />
 
         {/* Day works */}
         <Stack.Screen name="FoodTiming" component={FoodTimingScreen} />
