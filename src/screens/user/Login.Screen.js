@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Theme from '../../assets/them/AxTheme';
+import Auth from '../../service/firebase/config';
 
 const LoginScreen = ({navigation}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
@@ -32,6 +33,16 @@ const LoginScreen = ({navigation}) => {
   };
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSubmite = async () => {
+    try {
+      console.log(userName, password);
+      Auth.SignIn(userName, password);
+      navigation.navigate('Home');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -107,7 +118,7 @@ const LoginScreen = ({navigation}) => {
           <View style={[Theme.h5]} />
           <View style={[Theme.h10, Theme.flexDirRow]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Home')}
+              onPress={handleSubmite}
               style={[
                 Theme.bgGreen,
                 Theme.fBlack,

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "584987945198",
+    "project_id": "authapp-c1f86",
+    "storage_bucket": "authapp-c1f86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584987945198:android:74d2793d90fbbe09d56bff",
+        "android_client_info": {
+          "package_name": "com.adhdapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-gjm5i1q6Z5RficQLrVfzZPg3Vy71FEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584987945198:android:c8f6ea15a21543a7d56bff",
+        "android_client_info": {
+          "package_name": "com.kiddogrow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-gjm5i1q6Z5RficQLrVfzZPg3Vy71FEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
