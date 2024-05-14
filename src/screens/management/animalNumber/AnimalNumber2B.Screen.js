@@ -60,7 +60,7 @@ const AnimalNumber2BScreen = ({navigation}) => {
   const next = () => {
     stop();
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
-    const game = {
+    const gameObj = {
       duration,
       marks: chosseObj1 + chosseObj2 + chosseObj3,
       totalMark: 3,
@@ -68,9 +68,9 @@ const AnimalNumber2BScreen = ({navigation}) => {
       lavel: 2,
     };
     // clear();
-    game.marks === 3
-      ? navigation.navigate('Win', {game})
-      : navigation.navigate('Lost', {game});
+    gameObj.marks === 3
+      ? navigation.navigate('Win', {gameObj})
+      : navigation.navigate('Lost', {gameObj});
   };
 
   const formatTime = timeInSeconds => {

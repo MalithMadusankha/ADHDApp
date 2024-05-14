@@ -11,14 +11,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import TM from '../../../assets/them/AxTheme';
-import StopwatchGame from '../../../componet/StopwatchGame';
 
-const AnimalNumber1Screen = ({navigation}) => {
+const AnimalNumber1Screen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
+  const {game} = route.params;
+
   const next = () => {
-    const game = {};
     navigation.navigate('AnimalNumber1B', {game});
   };
 

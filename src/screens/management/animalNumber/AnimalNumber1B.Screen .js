@@ -12,9 +12,11 @@ import {
 import TM from '../../../assets/them/AxTheme';
 import StopwatchGame from '../../../componet/StopwatchGame';
 
-const AnimalNumber1BScreen = ({navigation}) => {
+const AnimalNumber1BScreen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
+
+  const {game} = route.params;
 
   const [startT, setStartT] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
@@ -46,7 +48,7 @@ const AnimalNumber1BScreen = ({navigation}) => {
   const next = () => {
     stop();
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
-    const game = {
+    const gameObj = {
       duration,
       marks: chosseObj1 + chosseObj2,
       totalMark: 2,
@@ -54,9 +56,9 @@ const AnimalNumber1BScreen = ({navigation}) => {
       lavel: 1,
     };
     // clear();
-    game.marks === 2
-      ? navigation.navigate('Win', {game})
-      : navigation.navigate('Lost', {game});
+    gameObj.marks === 2
+      ? navigation.navigate('Win', {gameObj})
+      : navigation.navigate('Lost', {gameObj});
   };
 
   const formatTime = timeInSeconds => {

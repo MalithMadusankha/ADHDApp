@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {
-  TextInput,
   Text,
   StyleSheet,
   View,
@@ -9,15 +8,10 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native';
 import TM from '../../../assets/them/AxTheme';
 import Stopwatch from '../../../componet/Stopwatch';
-import {
-  CLEAN_TYPE,
-  DAY_TYPE,
-  ESTIMATED_CLEAN,
-} from '../../../utility/ConstVaribales';
+import {CLEAN_TYPE, ESTIMATED_CLEAN} from '../../../utility/ConstVaribales';
 
 const CleanTimingScreen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
@@ -29,7 +23,7 @@ const CleanTimingScreen = ({navigation, route}) => {
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
 
-  const {cleanType} = route.params;
+  const {dayObj} = route.params;
 
   const css = {
     input: {
@@ -67,8 +61,12 @@ const CleanTimingScreen = ({navigation, route}) => {
 
   const next = () => {
     const duration = Math.floor((endT - startT) / 1000);
+    const {day, dayType, activityType, cleanType} = dayObj;
     const activity = {
-      duration,
+      duration, // seconds
+      day,
+      dayType,
+      activityType,
       cleanType,
       estimate: ESTIMATED_CLEAN[cleanType],
     };
@@ -125,6 +123,7 @@ const CleanTimingScreen = ({navigation, route}) => {
             />
           </View>
         </TouchableOpacity>
+
         <View
           style={[
             TM.mt10,
@@ -137,7 +136,7 @@ const CleanTimingScreen = ({navigation, route}) => {
           <View style={[TM.h1]} />
           <Text
             style={[TM.fBlack, TM.fBold, TM.f18, TM.h10, TM.txtAlignCenter]}>
-            {CLEAN_TYPE[cleanType]} ක්‍රියාකාරකම් පටන්ගන්න
+            {CLEAN_TYPE[dayObj.cleanType]} ක්‍රියාකාරකම් පටන්ගන්න
           </Text>
           <View style={[TM.h1]} />
 

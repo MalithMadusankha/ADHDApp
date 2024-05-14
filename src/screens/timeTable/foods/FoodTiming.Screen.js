@@ -25,7 +25,7 @@ const FoodTimingScreen = ({navigation, route}) => {
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
 
-  const {dayType} = route.params;
+  const {dayObj} = route.params;
 
   const css = {
     input: {
@@ -63,9 +63,12 @@ const FoodTimingScreen = ({navigation, route}) => {
 
   const next = () => {
     const duration = Math.floor((endT - startT) / 1000);
+    const {day, dayType, activityType} = dayObj;
     const activity = {
       duration,
+      day,
       dayType,
+      activityType,
       estimate: ESTIMATED_FOOD[dayType],
     };
     clear();
@@ -133,7 +136,7 @@ const FoodTimingScreen = ({navigation, route}) => {
           <View style={[TM.h1]} />
           <Text
             style={[TM.fBlack, TM.fBold, TM.f18, TM.h10, TM.txtAlignCenter]}>
-            {DAY_TYPE[dayType]} ආහාර ක්‍රියාකාරකම් පටන්ගන්න
+            {DAY_TYPE[dayObj.dayType]} ආහාර ක්‍රියාකාරකම් පටන්ගන්න
           </Text>
           <View style={[TM.h1]} />
 

@@ -776,6 +776,10 @@ const AxTheme = StyleSheet.create({
     width: '100%',
   },
 
+  hpx150: {
+    height: '200px',
+  },
+
   w110: {
     width: '110%',
   },
@@ -1093,6 +1097,12 @@ const AxTheme = StyleSheet.create({
 
   borderRadius20: {
     borderRadius: 20,
+  },
+
+  borderRadiusTB20: {
+    borderRadius: 20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
 
   borderRadius40: {

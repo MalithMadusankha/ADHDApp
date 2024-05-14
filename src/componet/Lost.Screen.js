@@ -10,19 +10,48 @@ import {
   TouchableOpacity,
   ToastAndroid,
   BackHandler,
+  Alert,
 } from 'react-native';
 import TM from '../assets/them/AxTheme';
+import {AddGame} from '../service/GameService';
+import SaveIswin from '../screens/management/helper/ManageGameLevels';
 
 const LostScreen = ({navigation, route}) => {
   const SCREEN_WIDTH = Dimensions.get('screen').width;
   const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
-  const {game} = route.params;
+  const {gameObj} = route.params;
   const showToast = () => {
     ToastAndroid.show('Backward is disabled !', ToastAndroid.SHORT);
   };
 
-  const next = () => {
+  const submitHandler = async () => {
+    try {
+      const {duration, marks, totalMark, gameType, lavel} = gameObj;
+
+      const isWin = false;
+
+      const dataObj = {
+        duration,
+        mark: marks,
+        totalMark,
+        gameType,
+        lavel,
+        isWin,
+      };
+      const res = await AddGame(dataObj);
+      await SaveIswin(gameType, lavel, isWin);
+      if (res && res.data.status === 'success') {
+        Alert.alert('දත්ත සුරකින ලදී');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const next = async () => {
+    await submitHandler();
+    const game = gameObj;
     navigation.navigate('LostMark', {game});
   };
 

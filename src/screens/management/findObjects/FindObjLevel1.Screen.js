@@ -55,7 +55,7 @@ const FindObjLevel1Screen = ({navigation}) => {
   const next = () => {
     stop();
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
-    const game = {
+    const gameObj = {
       duration,
       marks: chosseObj1 + chosseObj2 + chosseObj3 + isNoCorrect,
       totalMark: 5,
@@ -63,9 +63,9 @@ const FindObjLevel1Screen = ({navigation}) => {
       lavel: 1,
     };
     // clear();
-    isNoCorrect === 0
-      ? navigation.navigate('Lost', {game})
-      : navigation.navigate('Win', {game});
+    gameObj.marks < 3
+      ? navigation.navigate('Lost', {gameObj})
+      : navigation.navigate('Win', {gameObj});
   };
 
   const formatTime = timeInSeconds => {

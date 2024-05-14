@@ -36,7 +36,7 @@ const Memory3BScreen = ({navigation}) => {
   const next = () => {
     stop();
     const duration = Math.floor((new Date().getTime() - startT) / 1000);
-    const game = {
+    const gameObj = {
       duration,
       marks: isBaloon + isFlower + isDis + isShose,
       totalMark: 4,
@@ -44,9 +44,9 @@ const Memory3BScreen = ({navigation}) => {
       lavel: 3,
     };
     // clear();
-    game.marks === 4
-      ? navigation.navigate('Win', {game})
-      : navigation.navigate('Lost', {game});
+    gameObj.marks === 4
+      ? navigation.navigate('Win', {gameObj})
+      : navigation.navigate('Lost', {gameObj});
   };
 
   const formatTime = timeInSeconds => {
