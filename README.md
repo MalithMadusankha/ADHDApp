@@ -1,72 +1,45 @@
-This is a new
+# ADHD App
 
-# Getting Started
+## Description
+The **ADHD App** is designed to help diagnose Attention Deficit Hyperactivity Disorder (ADHD) by tracking users' daily routines. The app monitors how much time users take to complete various activities, such as breakfast, lunch, dinner, playing games, washing, and cleaning. Based on this data, a trained machine learning model predicts the user's ADHD level and recommends personalized guidelines. The app analyzes monthly activity data to provide a comprehensive insight into the user's behavior.
 
-> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Features
+- **Daily Activity Tracking:**  
+  Tracks the time spent on daily activities such as:
+  - Breakfast 🍽️
+  - Lunch 🍴
+  - Dinner 🍲
+  - Playing Games 🎮
+  - Washing 🚿
+  - Cleaning 🧹
 
-## Step 1: Start the Metro Server
+- **ADHD Prediction:**  
+  Uses a trained machine learning model to predict the ADHD level based on the user's activity data.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- **Personalized Guidelines:**  
+  After analyzing the user’s monthly activity, the app recommends personalized guidelines to help manage ADHD symptoms.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Technologies Used
+- **Frontend:** React Native 🖥️📱
+- **Backend:** FastAPI ⚙️, Python 🐍
+- **Database:** MongoDB 💾
+- **Authentication:** Firebase 🔑
+- **Machine Learning:** Decision Tree 🌳, Logistic Regression 📊, K-NN 🔍
 
-```bash
-# using npm
-npm start
+## Responsibilities
+- Developed the mobile app using **React Native** 🖥️📱, integrating **Firebase** 🔑 for authentication and **MongoDB** 💾 for data storage.
+- Implemented **machine learning models** (Decision Tree 🌳, Logistic Regression 📊, K-NN 🔍) to analyze daily activity data and predict ADHD levels.
+- Designed a **simple, user-friendly UI** based on **Figma** design 🎨.
+- Implemented a **daily tracking system** to monitor users' time spent on different activities ⏱️.
 
-# OR using Yarn
-yarn start
-```
+## Outcome
+The app helps diagnose ADHD by tracking users' daily routines and predicting their ADHD level based on activity data. It provides personalized recommendations to assist in managing ADHD symptoms.
 
-## Step 2: Start your Application
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/adhd-app.git
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-```bash
-# Clean
-yarn cache clean
-cd android && ./gradlew clean
-```
-
-### Build APK
-
-```bash
-# Clean
-cd android && ./gradlew clean
-```
-
-```bash
-# Build
-gradlew assembleRelease
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-### UI Figma
-
-Games : `https://www.figma.com/file/AvAwoXfquVEyRzbG4MZUC9/Figma-Mobile-Design?type=design&node-id=38-6032&mode=design&t=XuCMg0qcYjxCb6ih-0`
 
 ## Screen Shots
 
